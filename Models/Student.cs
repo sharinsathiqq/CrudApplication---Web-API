@@ -26,4 +26,7 @@ public class Student
     public int departmentId { get; set; }
 
     public string? ProfilePhotoFile { get; set; }  // Nullable string
+
+    // New Address field
+    public string? Address { get; set; } // Nullable
 }

@@ -9,5 +9,8 @@
         public string dob { get; set; }  // String to control format
         public int departmentId { get; set; }
         public string? ProfilePhotoFile { get; set; }
+
+        // New Address field
+        public string? Address { get; set; } // Nullable, because address might not be mandatory
     }
 }

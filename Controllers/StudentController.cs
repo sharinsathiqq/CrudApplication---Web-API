@@ -17,15 +17,12 @@ namespace CrudApplication.Controllers
     public class StudentController : ControllerBase
     {
         private readonly StudentDBContext _studentDbContext;
-        
         private readonly ILogger<StudentController> _logger;
-       
 
         public StudentController(StudentDBContext studentDbContext, ILogger<StudentController> logger)
         {
             _studentDbContext = studentDbContext;
             _logger = logger;
-         
         }
 
         // GET: api/Student
@@ -67,7 +64,8 @@ namespace CrudApplication.Controllers
 
             return CreatedAtAction("GetStudent", new { id = student.Id }, student);
         }
-        [HttpPost("Image")] 
+
+        [HttpPost("Image")]
         public async Task<IActionResult> UploadProfilePhoto(IFormFile file)
         {
             if (file == null || file.Length == 0)
@@ -96,7 +94,6 @@ namespace CrudApplication.Controllers
 
             return Ok(fileName);
         }
-       
 
         // PUT: api/Student/5
         [HttpPut("{id}")]
@@ -118,6 +115,7 @@ namespace CrudApplication.Controllers
             existingStudent.phoneNumber = student.phoneNumber;
             existingStudent.dob = student.dob;
             existingStudent.departmentId = student.departmentId;
+            existingStudent.Address = student.Address; // Update the address field
 
             if (file != null && file.Length > 0)
             {
@@ -161,7 +159,7 @@ namespace CrudApplication.Controllers
 
             if (!string.IsNullOrEmpty(student.ProfilePhotoFile))
             {
-               
+                // Optionally handle file deletion logic here
             }
 
             _studentDbContext.Students.Remove(student);
